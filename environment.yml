@@ -5,7 +5,7 @@ dependencies:
   - dlib
   - numpy
   - scipy
-  - opencv-python
+  - opencv
   - face_recognition
   - joblib
   - pip
