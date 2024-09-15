@@ -7,6 +7,7 @@ channels:
      - opencv-python
      - face_recognition
      - numpy
+     - joblib
      - pip
      - pip:
-       - -r requirements.txt
+       - install joblib
