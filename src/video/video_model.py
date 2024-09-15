@@ -18,7 +18,7 @@ class VideoModel:
 
     def __init__(self):
         self.face_detector = dlib.get_frontal_face_detector()
-        self.shape_predictor = dlib.shape_predictor("src\\video\saved\shape_predictor_68_face_landmarks.dat")
+        self.shape_predictor = dlib.shape_predictor("src/video/saved/shape_predictor_68_face_landmarks.dat")
         self.trait_model = {trait: joblib.load(trait_model_paths[trait]) for trait in trait_names}
         self.rf_model = joblib.load(rf_model_path)
     
