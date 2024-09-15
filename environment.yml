@@ -7,6 +7,8 @@ dependencies:
   - opencv
   - face_recognition
   - joblib
+  - scikit-learn
+  - dlib
   - pip
   - pip:
       - -r requirements.txt

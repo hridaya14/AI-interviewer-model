@@ -7,8 +7,8 @@ import numpy as np
 
 trait_names = ['openness', 'conscientiousness', 'extraversion', 'agreeableness', 'neuroticism']
 
-trait_model_paths = {trait: f"src\\video\saved\{trait}_updated_svr_model.pkl" for trait in trait_names}
-rf_model_path = "src\\video\saved\\rf_updated_model.pkl"
+trait_model_paths = {trait: f"src/video/saved/{trait}_updated_svr_model.pkl" for trait in trait_names}
+rf_model_path = "src/video/saved/rf_updated_model.pkl"
 
 class VideoModel:
 
