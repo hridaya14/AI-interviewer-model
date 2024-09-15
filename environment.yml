@@ -7,4 +7,3 @@ channels:
      - opencv-python
      - face_recognition
      - numpy
-     - joblib
