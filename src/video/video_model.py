@@ -1,4 +1,4 @@
-from sklearn.externals import joblib
+import joblib
 import dlib
 from .face_preprocessing import process_video
 import numpy as np
