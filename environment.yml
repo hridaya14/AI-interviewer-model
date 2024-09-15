@@ -2,7 +2,7 @@
 channels:
   - conda-forge
 dependencies:
-  - dlib
+  - dlib-bin
   - numpy
   - scipy
   - opencv
