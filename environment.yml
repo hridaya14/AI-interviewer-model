@@ -7,3 +7,6 @@ channels:
      - opencv-python
      - face_recognition
      - numpy
+     - pip
+     - pip:
+       - -r requirements.txt
