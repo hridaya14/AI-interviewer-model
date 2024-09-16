@@ -1,39 +1,45 @@
-import streamlit as st
+import gradio as gr
 import os
 from src.video.video_model import VideoModel as vm
 
+def process_video(uploaded_file):
+    if uploaded_file is not None:
+        video_path = uploaded_file
 
-st.title("Video Face Processing App")
-st.write("Upload an MP4 video to process.")
-
-
-uploaded_file = st.file_uploader("Choose a video file", type=["mp4"])
-
-if uploaded_file is not None:
-    st.video(uploaded_file) 
-
-    if uploaded_file.type == "video/mp4":
-        
-        video_path = "temp/uploaded_video.mp4"
-        os.makedirs(os.path.dirname(video_path), exist_ok=True)
-
-        with open(video_path, mode="wb") as f:
-            f.write(uploaded_file.read())
-
-        st.write("Processing the video...")
-
+       
         video_model = vm()
-
         x_features = video_model.preprocess_video(video_path)
 
         if x_features is not None:
-            traits = video_model.predict_traits(x_features)
-            st.write("Predicted traits:")
-            for trait, value in traits.items():
-                st.write(f"{trait}: {value}")
-        
-        st.write("Video processing complete.")
-        st.write("Thank you :)")
-    
-    else:
-        st.error("Please upload an MP4 file.")
+           
+            predictions = video_model.predict_traits(x_features)
+            
+            if predictions is not None:
+                
+                result_text = "Predicted Traits:\n"
+                for trait, value in predictions["traits"].items():
+                    result_text += f"{trait}: {value}\n"
+                
+                result_text += f"\nInterview Readiness Score: {predictions['interview_readiness']}\n"
+                
+                return result_text
+
+        return "Video processing failed."
+    return "Please upload a valid MP4 file."
+
+
+video_input = gr.Video(label="Upload MP4 Video")
+output_text = gr.Textbox(label="Predicted Traits & Interview Readiness")
+upload_btn = gr.Button("Process Video")
+
+
+demo = gr.Interface(
+    fn=process_video, 
+    inputs=video_input, 
+    outputs=output_text, 
+    live=True,
+)
+
+# Launch the app
+if __name__ == "__main__":
+    demo.launch(share = True)
