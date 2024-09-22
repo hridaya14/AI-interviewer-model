@@ -1,0 +1,12 @@
+Upload MP4 Video,Predicted Traits & Interview Readiness,flag,username,timestamp
+"{""video"": ""flagged\\Upload MP4 Video\\8e53d6197daa23701e67\\_uNup91ZYw0.002.mp4"", ""subtitles"": null}","Predicted Traits:
+openness: 0.5769015240141792
+conscientiousness: 0.47871989620253974
+extraversion: 0.5245909506043329
+agreeableness: 0.5803137505288349
+neuroticism: 0.5255904352853382
+
+Interview Readiness Score: 0.4902803738317755
+
+Predicted Emotion:
+{'neutral': 0.0, 'calm': 0.25, 'happy': 0.25, 'sad': 0.0, 'fearful': 0.25, 'surprised': 0.25}",,,2024-09-22 14:22:40.289808

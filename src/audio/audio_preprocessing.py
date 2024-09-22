@@ -37,11 +37,15 @@ def extract_feature(data, sr, mfcc=True, chroma=True, mel=True):
 
 def predict_emotion(file_path):
     # Load the model
-    model = tf.keras.models.load_model('src/audio/saved/emotion_recognition_model.h5')
+    model = tf.keras.models.load_model('src/audio/saved/emotion_recognition_model_combined.h5' , compile=False)
     print("Model loaded successfully")
 
+    # Compile the model with a new optimizer if needed
+    optimizer = tf.keras.optimizers.RMSprop(learning_rate=0.001)  # Adjust learning rate as necessary
+    model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
     # Load the label encoder
-    label_encoder = joblib.load('src/audio/saved/label_encoder.pkl')
+    label_encoder = joblib.load('src/audio/saved/label_encoder_combined.pkl')
 
     # Load and preprocess the audio file
     data, sr = librosa.load(file_path)
